@@ -127,11 +127,11 @@ header {
 	position: absolute;
 }
 #banner .arrow_left {
-	left: 10px;
+	left: 25px;
 	position: fixed;
 }
 #banner .arrow_right {
-	right: 10px;
+	right: 25px;
 	position: fixed;
 }
 /* Gestion des points du carrousel */
@@ -141,6 +141,7 @@ header {
 	display: flex;
 }
 .dot {
+	
 	margin-inline: 5px;
 	width: 13px;
 	height: 13px;
@@ -151,6 +152,7 @@ header {
 }
 .dot_selected {
 	background-color: #fff;
+	
 }
 /* Fin du code CSS pour le carousel */
 #banner p {

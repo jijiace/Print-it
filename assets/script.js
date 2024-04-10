@@ -23,20 +23,40 @@ const slides = [
     const bannerimg = document.querySelector(".banner-img")
     const lienimg = './assets/images/slideshow/'
     const text = document.querySelector(".text")
+    const dots = document.querySelectorAll('.dot');
   let index=0
-   arrowLeft.addEventListener('click', function(event) {
-    index=index-1
-    let img = slides[index]
-    bannerimg.src=lienimg+img.image
-    text.innerHTML= img.tagLine
-     
-        console.log("left")
-    });
-    arrowRight.addEventListener('click', function(event) { 
-        index=index+1
-       let img = slides[index]
-       bannerimg.src=lienimg+img.image
-       text.innerHTML= img.tagLine
-    });
+  
+  function updateSlide() {
+    const img = slides[index];
+    bannerimg.src = './assets/images/slideshow/' + img.image;
+    text.innerHTML = img.tagLine;
 
+   
+    dots.forEach(dot => {
+        dot.classList.remove('dot_selected');
+    });
+   
+    dots[index].classList.add('dot_selected');
+}
+
+arrowLeft.addEventListener('click', function(event) {
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlide();
+});
+
+arrowRight.addEventListener('click', function(event) {
+    index = (index + 1) % slides.length;
+    updateSlide();
+});
+
+
+dots.forEach((dot, dotIndex) => {
+    dot.addEventListener('click', () => {
+        index = dotIndex;
+        updateSlide();
+    });
+});
+
+updateSlide();
+   
 
